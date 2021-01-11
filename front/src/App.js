@@ -14,7 +14,8 @@ function App() {
   };
 
   const onClickButton = () => {
-    setMovies(...movies, {name: name, price: price});
+    const temp = movies.concat({ name: name, price: price });
+    setMovies(temp);
   };
 
   return (
@@ -23,7 +24,7 @@ function App() {
       <div>
         <div>
           <h3>영화 리스트</h3>
-          {movies.map((movie)=>{
+          {movies.map((movie) => {
             return (
               <div>
                 <ul>
@@ -31,10 +32,9 @@ function App() {
                   <li>영화제목: {movie.price}</li>
                 </ul>
               </div>
-          })
-        }
+            );
+          })}
         </div>
-      </div>
         <div>
           <span>영화 이름: </span>
           <input
@@ -49,7 +49,7 @@ function App() {
           <input
             type="number"
             placeholder="영화 가격을 입력해주세요."
-            onChange={onChangeName}
+            onChange={onChangePrice}
             value={price}
           ></input>
         </div>
